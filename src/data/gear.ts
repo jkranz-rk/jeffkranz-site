@@ -15,7 +15,7 @@ export const gear: GearItem[] = [
   {
     name: 'Ibanez 540S',
     category: 'Guitar',
-    note: 'A late-80s shredder with a fast neck and a tone that cuts right through.',
+    note: 'An early 90s shredder with a fast neck and a tone that cuts right through.',
     image: '/images/placeholder.svg',
   },
   {
