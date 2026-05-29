@@ -1,5 +1,6 @@
 ---
 import { photos } from '../data/photos';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section id="photography">
@@ -14,7 +15,7 @@ import { photos } from '../data/photos';
     <div class="gallery">
       {photos.map((photo, i) => (
         <div class="gallery-item" data-index={i}>
-          <img src={photo.src} alt={photo.alt} loading="lazy" />
+          <img src={`${base}${photo.src}`} alt={photo.alt} loading="lazy" />
           {photo.caption && <p class="caption">{photo.caption}</p>}
         </div>
       ))}

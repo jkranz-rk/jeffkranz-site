@@ -1,5 +1,6 @@
 ---
 import { recipes } from '../data/recipes';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <section id="cooking">
@@ -16,7 +17,7 @@ import { recipes } from '../data/recipes';
         <details class="recipe-card">
           <summary>
             <div class="recipe-img-wrap">
-              <img src={recipe.image} alt={recipe.title} loading="lazy" />
+              <img src={`${base}${recipe.image}`} alt={recipe.title} loading="lazy" />
             </div>
             <div class="recipe-header">
               <div class="tags">
