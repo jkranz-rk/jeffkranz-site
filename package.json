@@ -9,9 +9,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "prepare": "husky"
   },
   "dependencies": {
     "astro": "^3.6.5"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "sharp": "^0.34.5"
   }
 }
