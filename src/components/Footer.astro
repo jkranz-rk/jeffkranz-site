@@ -1,0 +1,30 @@
+---
+---
+<footer>
+  <div class="container footer-inner">
+    <span class="wordmark">Jeff Kranz</span>
+    <span class="copy">&copy; {new Date().getFullYear()}</span>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 0;
+    background: var(--bg);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .wordmark {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+  .copy {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+</style>

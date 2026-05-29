@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import GuitarSection from '../components/GuitarSection.astro';
+import PhotographySection from '../components/PhotographySection.astro';
+import CookingSection from '../components/CookingSection.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Jeff Kranz">
+  <Nav />
+  <main>
+    <Hero />
+    <GuitarSection />
+    <PhotographySection />
+    <CookingSection />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding-top: 60px; }
+</style>

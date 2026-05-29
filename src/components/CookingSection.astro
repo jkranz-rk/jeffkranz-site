@@ -1,0 +1,152 @@
+---
+import { recipes } from '../data/recipes';
+---
+
+<section id="cooking">
+  <div class="container">
+    <p class="section-label">Hobby</p>
+    <h2 class="section-title">Cooking</h2>
+    <div class="divider"></div>
+    <p class="section-intro">
+      Cooking shares something with both guitar and photography: the same ingredients, the same light, the same technique — and yet every result is different. These are the recipes I keep coming back to.
+    </p>
+
+    <div class="recipes-grid">
+      {recipes.map(recipe => (
+        <details class="recipe-card">
+          <summary>
+            <div class="recipe-img-wrap">
+              <img src={recipe.image} alt={recipe.title} loading="lazy" />
+            </div>
+            <div class="recipe-header">
+              <div class="tags">
+                {recipe.tags.map(tag => <span class="tag">{tag}</span>)}
+              </div>
+              <h3 class="recipe-title">{recipe.title}</h3>
+              <p class="recipe-desc">{recipe.description}</p>
+              <span class="expand-hint">View recipe ↓</span>
+            </div>
+          </summary>
+
+          <div class="recipe-body">
+            <div class="recipe-col">
+              <h4>Ingredients</h4>
+              <ul>
+                {recipe.ingredients.map(ing => <li>{ing}</li>)}
+              </ul>
+            </div>
+            <div class="recipe-col">
+              <h4>Method</h4>
+              <ol>
+                {recipe.steps.map(step => <li>{step}</li>)}
+              </ol>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  section { background: var(--bg-2); border-top: 1px solid var(--border); }
+
+  .recipes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .recipe-card {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .recipe-card[open] { border-color: var(--accent-dim); }
+
+  summary {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary:hover { background: rgba(255,255,255,0.02); }
+  @media (max-width: 600px) { summary { grid-template-columns: 1fr; } }
+
+  .recipe-img-wrap {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #111;
+  }
+  @media (max-width: 600px) { .recipe-img-wrap { aspect-ratio: 16/6; } }
+  .recipe-img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+
+  .recipe-header { padding: 1.4rem 1.5rem; }
+
+  .tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+  .tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.2);
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .recipe-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .recipe-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+  }
+  .expand-hint {
+    font-size: 0.75rem;
+    color: var(--accent-dim);
+    letter-spacing: 0.05em;
+  }
+  .recipe-card[open] .expand-hint { display: none; }
+
+  .recipe-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 1.5rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 700px) { .recipe-body { grid-template-columns: 1fr; } }
+
+  .recipe-col h4 {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+  .recipe-col ul, .recipe-col ol {
+    padding-left: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .recipe-col li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .recipe-col ol li::marker { color: var(--accent); font-weight: 600; }
+</style>

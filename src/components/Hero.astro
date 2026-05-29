@@ -1,0 +1,84 @@
+---
+---
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Jeff Kranz</p>
+    <h1>I make things —<br />music, images, food.</h1>
+    <p class="sub">Guitar, photography, and cooking. Three crafts, one obsession: making something that wasn't there before.</p>
+    <div class="cta-row">
+      <a href="#guitar" class="btn">Guitar</a>
+      <a href="#photography" class="btn btn-ghost">Photography</a>
+      <a href="#cooking" class="btn btn-ghost">Cooking</a>
+    </div>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200, 169, 110, 0.07) 0%, transparent 70%),
+      var(--bg);
+    overflow: hidden;
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.75rem;
+  }
+  .sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 50ch;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    background: var(--accent);
+    color: #0d0d0d;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { text-decoration: none; opacity: 0.85; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--text-muted); }
+  .hero-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events: none;
+  }
+</style>

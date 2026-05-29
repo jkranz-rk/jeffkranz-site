@@ -1,0 +1,144 @@
+---
+import { photos } from '../data/photos';
+---
+
+<section id="photography">
+  <div class="container">
+    <p class="section-label">Hobby</p>
+    <h2 class="section-title">Photography</h2>
+    <div class="divider"></div>
+    <p class="section-intro">
+      I shoot with a <strong>Nikon D3400</strong>. Photography taught me to slow down and actually look at things — the quality of light, how a frame changes when you move two steps left. Most of what I shoot is whatever's in front of me: landscapes, still life, street, the occasional portrait.
+    </p>
+
+    <div class="gallery">
+      {photos.map((photo, i) => (
+        <div class="gallery-item" data-index={i}>
+          <img src={photo.src} alt={photo.alt} loading="lazy" />
+          {photo.caption && <p class="caption">{photo.caption}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+    <button class="lb-prev" id="lb-prev" aria-label="Previous">‹</button>
+    <button class="lb-next" id="lb-next" aria-label="Next">›</button>
+    <div class="lb-img-wrap">
+      <img id="lb-img" src="" alt="" />
+    </div>
+  </div>
+</section>
+
+<script>
+  const items = document.querySelectorAll<HTMLElement>('.gallery-item');
+  const lightbox = document.getElementById('lightbox')!;
+  const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+  let current = 0;
+
+  const srcs = Array.from(items).map(el => {
+    const img = el.querySelector('img')!;
+    return { src: img.src, alt: img.alt };
+  });
+
+  function open(index: number) {
+    current = index;
+    lbImg.src = srcs[current].src;
+    lbImg.alt = srcs[current].alt;
+    lightbox.classList.add('active');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    lightbox.classList.remove('active');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+  document.getElementById('lb-close')!.addEventListener('click', close);
+  document.getElementById('lb-prev')!.addEventListener('click', () => open((current - 1 + srcs.length) % srcs.length));
+  document.getElementById('lb-next')!.addEventListener('click', () => open((current + 1) % srcs.length));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') open((current - 1 + srcs.length) % srcs.length);
+    if (e.key === 'ArrowRight') open((current + 1) % srcs.length);
+  });
+</script>
+
+<style>
+  section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .gallery {
+    columns: 3;
+    column-gap: 0.75rem;
+  }
+  @media (max-width: 800px) { .gallery { columns: 2; } }
+  @media (max-width: 480px) { .gallery { columns: 1; } }
+
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+  }
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.3s, transform 0.4s;
+  }
+  .gallery-item:hover img { opacity: 1; transform: scale(1.02); }
+
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.active { display: flex; }
+
+  .lb-img-wrap {
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-img-wrap img { max-width: 100%; max-height: 90vh; object-fit: contain; border-radius: 3px; }
+
+  .lb-close, .lb-prev, .lb-next {
+    position: fixed;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 2rem;
+    transition: color 0.2s;
+    line-height: 1;
+    padding: 0.5rem;
+  }
+  .lb-close:hover, .lb-prev:hover, .lb-next:hover { color: var(--text); }
+  .lb-close { top: 1.5rem; right: 1.5rem; font-size: 1.25rem; }
+  .lb-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+  .lb-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+</style>
