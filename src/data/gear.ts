@@ -34,7 +34,7 @@ export const gear: GearItem[] = [
     name: 'Marshall DSL40CR',
     category: 'Amplifier',
     note: 'Classic British tone stack. Clean headroom, a snarl when pushed, and enough volume to wake the neighbors.',
-    image: '/images/dsl40cr.JPG',
+    image: '/images/pedals/dsl40cr.JPG',
   },
   {
     name: 'Dunlop JH-1 Wah',
