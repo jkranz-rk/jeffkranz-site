@@ -1,0 +1,404 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const experience = [
+  {
+    company: 'Salesforce',
+    roles: [
+      {
+        title: 'Senior Product Manager — Automation Extensibility Platform',
+        dates: 'Aug 2024 – May 2026',
+        bullets: [
+          { label: 'Product Strategy & Vision', text: 'Own the end-to-end two-year strategy and vision for a platform executing 38B+ monthly actions across 108K+ enterprise environments, defining and delivering on KPIs including an 80% Customer Effort Score target.' },
+          { label: 'Results-Driven Innovation', text: 'Launched Salesforce Hosted MCP Servers, a production-grade, multi-tenant solution on Hyperforce that reached 1,000+ customers within two weeks of GA.' },
+          { label: 'Customer Discovery & Roadmap Execution', text: 'Identified and shipped the Automation Schema layer as a strategic alternative to legacy type systems, eliminating core performance bottlenecks and enabling teams across Agentforce and Marketing Cloud to meet aggressive delivery timelines.' },
+          { label: 'Outcome-Driven Leadership', text: 'Directed the sunsetting strategy for legacy products (Strategy Builder), eliminating 25% of the maintenance burden for core engineering teams while preserving critical customer workflows.' },
+          { label: 'Organization-wide Collaboration', text: 'Partner with engineering, design, and GTM teams across Agentforce, MuleSoft, and Data Cloud to align on roadmap priorities and deliver a unified extensibility framework.' },
+        ],
+      },
+    ],
+  },
+  {
+    company: 'Riskonnect, Inc.',
+    roles: [
+      {
+        title: 'Senior Platform Product Manager',
+        dates: 'Oct 2020 – Aug 2024',
+        bullets: [
+          { label: 'Strategic Growth', text: 'Owned and prioritized an 18-month Platform roadmap, collaborating directly with executive leadership to align product development with business objectives, contributing to a successful private equity acquisition.' },
+          { label: 'Enterprise Scaling', text: 'Improved configuration tools and admin experiences, significantly reducing time-to-value for enterprise customers on a data-heavy risk management platform.' },
+          { label: 'Feature Prioritization', text: 'Managed shared delivery outcomes across engineering, sales, and support, making critical trade-offs to ensure incremental value delivery every sprint.' },
+        ],
+      },
+      {
+        title: 'Various Technical and Product Roles',
+        dates: 'Aug 2012 – Oct 2020',
+        bullets: [
+          { label: 'Product Manager, Product Services', text: 'Bridged technical requirements and engineering delivery for specialized enterprise services.' },
+          { label: 'Solution Architect', text: 'Designed complex technical solutions and consulted with clients on business and technical best practices.' },
+          { label: 'Senior Account Manager', text: 'Managed a book of key clients from sales handoff through implementation and ongoing support, consistently meeting and exceeding growth goals.' },
+        ],
+      },
+    ],
+  },
+  {
+    company: 'Aon Corporation',
+    roles: [
+      {
+        title: 'Technical Project Manager',
+        dates: 'Nov 2010 – Aug 2012',
+        bullets: [
+          { label: 'Process Optimization', text: 'Developed an implementation framework for a Medicare mandatory reporting solution.' },
+          { label: 'Project Portfolio', text: 'Managed schedule, scope, and budget for concurrent product upsell implementations.' },
+        ],
+      },
+      {
+        title: 'Technical Analyst',
+        dates: 'Jan 2009 – Nov 2010',
+        bullets: [
+          { label: 'Requirements Consultation', text: 'Consulted with Risk Management customers to refine requirements for custom enterprise risk management solution builds.' },
+          { label: 'Build and Execute', text: 'Developed complex data-driven UI and database-triggered automation solutions that comply with client requirements while maintaining a simple user experience.' },
+        ],
+      },
+    ],
+  },
+];
+
+const skills = [
+  {
+    category: 'Product Excellence',
+    items: ['Strategic Planning', 'Roadmap Prioritization', 'Customer Discovery', 'Backlog Refinement', 'Product Lifecycle Management'],
+  },
+  {
+    category: 'Data & Technical',
+    items: ['Data Interoperability', 'Async Execution Models', 'SQL (Oracle / SQL Server)', 'APIs & MCP Servers', 'Cloud Infrastructure (AWS / Hyperforce)'],
+  },
+  {
+    category: 'Leadership',
+    items: ['Cross-functional Stakeholder Management', 'Influencing Without Authority', 'Business Values & Goal Setting'],
+  },
+];
+---
+
+<Base title="Work — Jeff Kranz">
+  <Nav />
+  <main>
+
+    <!-- Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <p class="section-label">Career</p>
+        <h1>Product Manager.</h1>
+        <p class="intro">
+          15+ years building software products at the intersection of enterprise technology
+          and human experience — from risk management platforms to AI-powered automation at scale.
+        </p>
+        <a href="https://linkedin.com/in/jeffreykranz" target="_blank" rel="noopener" class="btn">
+          LinkedIn ↗
+        </a>
+      </div>
+      <div class="hero-fade"></div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience-section">
+      <div class="container">
+        <p class="section-label">Experience</p>
+
+        {experience.map((company) => (
+          <div class="company-block">
+            <div class="company-name-col">
+              <h2 class="company-name">{company.company}</h2>
+            </div>
+            <div class="roles-col">
+              {company.roles.map((role, i) => (
+                <div class={`role ${i > 0 ? 'role-secondary' : ''}`}>
+                  <div class="role-header">
+                    <h3 class="role-title">{role.title}</h3>
+                    <span class="role-dates">{role.dates}</span>
+                  </div>
+                  <ul class="bullets">
+                    {role.bullets.map((b) => (
+                      <li>
+                        <span class="bullet-label">{b.label}:</span>
+                        {' '}{b.text}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills-section">
+      <div class="container">
+        <p class="section-label">Core Competencies</p>
+        <div class="skills-grid">
+          {skills.map((group) => (
+            <div class="skill-group">
+              <h3 class="skill-category">{group.category}</h3>
+              <ul>
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Community -->
+    <section class="meta-section">
+      <div class="container meta-grid">
+        <div class="meta-block">
+          <p class="section-label">Education</p>
+          <ul class="meta-list">
+            <li>
+              <span class="meta-title">B.S. Computer and Information Technology</span>
+              <span class="meta-sub">Purdue University</span>
+            </li>
+            <li>
+              <span class="meta-title">Associate of Risk Management (ARM)</span>
+            </li>
+          </ul>
+        </div>
+        <div class="meta-block">
+          <p class="section-label">Community & Thought Leadership</p>
+          <ul class="meta-list">
+            <li>
+              <span class="meta-title">Speaker</span>
+              <span class="meta-sub">Dreamforce, TrailblazerDX — guest on <em>The Salesforce Way</em> podcast, contributor to UnofficialSF.com</span>
+            </li>
+            <li>
+              <span class="meta-title">Open Source</span>
+              <span class="meta-sub">Maintainer of GitHub repositories for specialized developer utilities</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding-top: 60px; }
+
+  /* Hero */
+  .page-hero {
+    position: relative;
+    padding: 7rem 0 6rem;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200, 169, 110, 0.06) 0%, transparent 70%),
+      var(--bg);
+    overflow: hidden;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+  .intro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 52ch;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    background: var(--accent);
+    color: #0d0d0d;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { text-decoration: none; opacity: 0.85; }
+  .hero-fade {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events: none;
+  }
+
+  /* Experience */
+  .experience-section { padding: 6rem 0; }
+  .experience-section .section-label { margin-bottom: 3rem; }
+
+  .company-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .company-block:last-child { border-bottom: 1px solid var(--border); }
+
+  .company-name {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--accent);
+    padding-top: 0.2rem;
+    font-weight: 600;
+  }
+
+  .role { margin-bottom: 2.5rem; }
+  .role:last-child { margin-bottom: 0; }
+
+  .role-secondary {
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .role-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+  }
+  .role-title {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+  .role-dates {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  .bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .bullets li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dim);
+  }
+  .bullet-label {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Skills */
+  .skills-section {
+    padding: 6rem 0;
+    background: var(--bg-2);
+  }
+  .skills-section .section-label { margin-bottom: 2.5rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .skill-group {
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.75rem;
+  }
+  .skill-category {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+  .skill-group ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .skill-group li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    padding-left: 0.75rem;
+    position: relative;
+  }
+  .skill-group li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dim);
+  }
+
+  /* Meta (Education + Community) */
+  .meta-section { padding: 6rem 0; }
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .meta-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .meta-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .meta-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .meta-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .company-block {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .meta-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
