@@ -58,7 +58,7 @@ export const gear: GearItem[] = [
     name: 'Keeley Phat Mod Full Range Overdrive',
     category: 'Pedal',
     note: 'A transparent, full-frequency overdrive that pushes the amp without coloring the tone.',
-    image: '/images/pedals/bossODR2.JPG',
+    image: '/images/pedals/phatmod.JPG',
   },
   {
     name: 'DOD Grunge (Modified)',
